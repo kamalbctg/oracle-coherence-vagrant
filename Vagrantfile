@@ -73,10 +73,10 @@ Vagrant.configure("2") do |config|
   #   apt-get install -y apache2
   # SHELL
   config.vm.provision "shell", path: "scripts/install-java.sh"
-  # Required for Oracle Coharance
-  config.vm.provision "shell", path: "scripts/install-oracle-coherence.sh"
+  config.vm.provision "shell", path: "scripts/swap.sh"
+  config.vm.provision "shell", privileged: false, path: "scripts/install-oracle-coherence.sh"
+
   #config.vm.provision "shell", inline: <<-SHELL
- 
 	#apt-get -y install ucommon-utils
 	#java -jar fmw_12.2.1.3.0_wls.jar -silent -responseFile /vagrant/fmw_version_coherence_response_file -waitForCompletion
 	#apt-get install -y maven git	
